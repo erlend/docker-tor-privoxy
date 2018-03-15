@@ -2,8 +2,8 @@ FROM alpine
 
 EXPOSE 8118 9050
 
-RUN apk --no-cache add privoxy tor runit
+RUN apk --no-cache add privoxy tor s6
 
 COPY service /etc/service/
 
-CMD ["runsvdir", "/etc/service"]
+CMD ["s6-svscan", "/etc/service"]
